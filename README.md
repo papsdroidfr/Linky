@@ -53,10 +53,39 @@ Pour faire des tests et écrire le programme, j'ai relié ma PYBtick26 sur le po
 
 ## programme de test pour récupérer la trame communiquée par prise TIC
 
-VOtre PYBStick doit être reliée à un ordinateur via sa prise USB pour voir sur un écran la trame communiquée par la prise TIC.
-Dans ce cas il n'est pas nécessaire d'avoir le pont-redesseur (ni l'écran OLED) puisque la PYBStick sera alimentée par la prise USB de votre ordi.
+Votre PYBStick26 doit être reliée à un ordinateur via sa prise USB pour voir sur un écran la trame communiquée par la prise TIC.
+Dans ce cas il n'est pas nécessaire d'avoir le pont-redesseur, ni l'écran OLED, ni les diodes Transil pour cet essai,  puisque la PYBStick26 sera alimentée par la prise USB de L'ordi. (moi j'utilise un petit raspberry pi 3b+ auquel j'accède en SSH tranquillement depuis mon bureau).
 
+ce programme est disponible dans les sources /tests
+```python
+ main.py -- put your code here!
 
+import pyb
+from time import sleep
+
+print('Linky start')
+
+# pybstick lite à 48MHz, config UART
+pyb.freq(48000000)
+buffer_size = 128
+info = pyb.UART(2, 1200, bits=7, parity=0, stop=1, timeout=0)
+
+def lecture_linky():
+    while True:
+        tampon=info.read(buffer_size)
+        print('tampon lu: ', tampon)
+        sleep(0.5)
+
+try:
+    lecture_linky()
+except KeyboardInterrupt:
+    print('Bye')
+```
+
+En vous connectant sur l'interpeteur REPL (screen /dev/ttyACM0 sous un système linux) depuis votre PC auquel la PYBSTICK26 est reliée , vous devez voir apparaître les caractères ASCII de la trame TIC lue dans le tampon:
+![trameTIC](_docs/demo_01.png)
+
+Si vous ne récoltez que du "None" dans le tampon c'est que l'opto-couplage ne fonctionne pas: vérifiez bien les branchements. Si vous utilisez un autre opto-coupleur que le VIshay K814P il se peut qu'il soit plus ou moins vite saturé, dans ce cas il faut y aller à tâton avec les resistances: essayez par exemple 1.2k au lieu de 1k et 3,3k ou 2,2k au lieu des 4,7kp our le pull-up en sortie du transisor. Vous pouvez inverser I1 et I2 dans le montage ce n'est pas grave.
 
 
 
