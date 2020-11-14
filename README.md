@@ -19,7 +19,7 @@ Plus d'information techniques sur la [prise TIC](https://www.enedis.fr/sites/def
 
 ![compteur linky](_docs/cableTIC.jpg)
 
-Concenrant le câble, soit vous utilisez un câble mono-brun (fils durs) de section 1mm comme par exemple des câbles bon marchés téléphoniques ou d'alarme, soit vous utilisez une nappe souple mais il faudra souder les bouts sur des bout de câble dur (ce que j'ai fait): j'ai utiliser 5m de napple souple bon marché utilisée pour aliemnter des rubans de leds par exple et ça fonctionne très bien.
+Concenrant le câble, soit vous utilisez un câble mono-brun (fils durs) de section 1mm et colorés, comme par exemple des câbles bon marchés téléphoniques ou d'alarme, soit vous utilisez une nappe souple mais il faudra souder les extremitées sur des bouts de câble dur (ce que j'ai fait): j'ai utilisé 5m de napple souple bon marché utilisée pour alimenter des rubans de leds par exemple et ça fonctionne très bien.
 
 
 
