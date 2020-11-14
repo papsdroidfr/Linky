@@ -89,4 +89,18 @@ Si vous ne récoltez que du "None" dans le tampon c'est que l'opto-couplage ne f
 
 ## programme pour affichage sur écran OLED
 
-Pour utiliser le dispositif complet auto-alimenté par la prise TIC, il faut réaliser le montage complet et ne surtout pas oublier les diodes Transil qui vont protéger des surtensions (il y a des pics tueurs  à 20v !). 
+Pour utiliser le dispositif complet auto-alimenté par la prise TIC, il faut d'abord réaliser le montage électronique complet, et ne surtout pas oublier les diodes transil qui vont protéger des surtensions (il y a des pics tueurs  à 20v !). Bien entendu ne reliez rien d'autre que la prise TIC I1, I2, et A sur votre circuit: **n'allez surtout pas y mettre du 220V** les diodes claqueraient fort mais vous vous métriez surtout en danger mortel d'électrocution!
+
+Pour communiquer avec l'écran OLED il faut installer toutes les dépendances : déposez bien tous les fichiers fournis dans /microPython à la racine de votre PYBStick. 
+
+Le script va lire en boucle la trame TIC stockée dans un tampon. il faut lire la doc de la prise TIC pour comprendre comment décoder cette trame mais ce n'est pas sorcier. Chaque indexe est fourni après un saut de ligne ('\n'), ensuite on a la valeur de l'indexe après un espace, et ainsi de suite. Chaque indexe a une taille qui lui est propre. Il suffit de stocker dans un dictionnaire les idexes que l'on veut rechercehr dans le tampon, avec leur taille on sait où récupérer les valeurs une fois que l'index est repéré dans le tampon, et le tour est joué.
+
+Les deux boutons de la PYBStick26 sont programmés pour 
+* allumer/etteindre l'écran si vous ne voulez pas qu'il reste allumé 7J/7 24h/24.
+* faire défiler deux écrans: l'un qui affiche les données de puissance en temps réel, et un autre qui affiche les données contractuelles.
+
+C'est une première version du programme, des améliorations sont en cours de réflexion et vous pouvez l'adapter à vos besoin.
+
+## Usage ludique et instructif !
+
+L'utlisation est très ludique est instructive. Allumez un lumière et vous verrez l'impact immédiat en W: une led va consommer 10W tandis qu'une ampoule à filament va brûler 50 à 80W!. Allumer votre télé, un ordinateur et plusieurs centaines de W se rajoutent. Le four électrique, bouilloire, micro-onde et le compteur s'affole avec plusieurs milliers de W, et retombe aussitôt les appareils étteints. Je trouve ça super rigolo est instructeur,c'est un très bon moyen de mieux consommer si on se rend compte en temps réel de sa consommation.
