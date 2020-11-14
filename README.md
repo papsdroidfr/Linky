@@ -19,7 +19,7 @@ Plus d'information techniques sur la [prise TIC](https://www.enedis.fr/sites/def
 
 ![compteur linky](_docs/cableTIC.jpg)
 
-Concenrant le câble, soit vous utilisez un câble mono-brun (fils durs) de section 1mm et colorés, comme par exemple des câbles bon marchés téléphoniques ou d'alarme, soit vous utilisez une nappe souple mais il faudra souder les extremités sur des câbles durs (ce que j'ai fait): j'ai utilisé 5m de nappe souple bon marché utilisée pour alimenter des rubans de leds par exemple et ça fonctionne très bien.
+Concenrant le câble, soit vous utilisez un câble monobrin (fils durs) de section 1mm et colorés, comme par exemple des câbles bon marchés téléphoniques ou d'alarme, soit vous utilisez une nappe souple mais il faudra souder les extremités sur des câbles durs (ce que j'ai fait): j'ai utilisé 5m de nappe souple bon marché utilisée pour alimenter des rubans de leds par exemple et ça fonctionne très bien.
 
 ## Circuit électronique
 ![schéma](_docs/schemaLinky.png)
@@ -33,6 +33,25 @@ L'électronique se compose de 4 blocs principaux.
 Le micro-contrôleur **PYBStick26** est bien adapté pour ce projet. Tout d'abord cocorico je rapelle qu'il s'agit d'un micro-contrôleur **made in France** que l'on peut trouver pour quelques € [ici](https://shop.mchobby.be/fr/micropython/1830-pybstick-lite-26-micropython-et-arduino-3232100018303-garatronic.html). Un modèle Lite est suffisant pour ce projet. Ce micro-controleur programmable en micro-python est équipé de connecteurs UART et I2C qui vont permettre de décoder le signal UART du compteur Linky et de communiquer avec un écran OLED I2C. Il intégre aussi son propre régulateur interne et accepte d'être alimentée aussi bien en 5v qu'en 18v max, donc pas besoin de rajouter un étage de régulation. Enfin cerise sur le gâteau il consomme à peine 20mA sous 5V on reste en dessous des 130mw max.
 
 Petite présentation de la PYBStick26: c'est [par ici](https://www.papsdroid.fr/post/pybstick).
+
+### Bilan du matériel nécessaire:
+* 1 PYBStick26 Lite
+* 2 pin header mâles 13 pins 2,54mm à souder sur la PYBStick26
+* 1 bornier à vis, 3 pin 2,54mm pour racorder les 3 fils de la prise TIC (I1, I2, A)
+* 2 diodes transil 16v DO-15
+* 1 opto-coupleur Vishay K814P
+* 1 résistance 1k
+* 1 résistance 4,7k
+* 4 diodes 1N4148
+* 1 condensateur électrolyte polarisé 100uF 25V
+* 1 condensateur céramique (non polarisé) 100nF
+* 1 écran OLED I2C 0.96" ou 1.3" 128*64 pixels, équipé de 4 pin mâles 2.54mm
+
+Le circuit est facilement réalisable sur une platine d'essai sans soudure de type breadboard.
+
+Pour faire des tests et écrire le programme, j'ai relié ma PYBtick26 sur le port USB d'un Raspberry pi3b+ que j'ai laissé dans ma cuisine. Je me suis ensuite connecté en SSH depuis mon bureau sur ce Rapsberry pi pour pouvoir écrire et tester les programmes micro-python de la PYBStick. Ceci ma évité d'avoir à tirer un immense câble depuis mon compteur linky (proche de ma cuisine en fait) jusqu'à mon bureau: très pratique... Bien entendu pur l'utilisation finale on n'a plus besoin du Raspberry pi.
+
+
 
 
 
