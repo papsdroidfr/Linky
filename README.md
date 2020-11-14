@@ -85,8 +85,8 @@ except KeyboardInterrupt:
 En vous connectant sur l'interpeteur REPL (screen /dev/ttyACM0 sous un système linux) depuis votre PC auquel la PYBSTICK26 est reliée , vous devez voir apparaître les caractères ASCII de la trame TIC lue dans le tampon:
 ![trameTIC](_docs/demo_01.png)
 
-Si vous ne récoltez que du "None" dans le tampon c'est que l'opto-couplage ne fonctionne pas: vérifiez bien les branchements. Si vous utilisez un autre opto-coupleur que le VIshay K814P il se peut qu'il soit plus ou moins vite saturé, dans ce cas il faut y aller à tâton avec les resistances: essayez par exemple 1.2k au lieu de 1k et 3,3k ou 2,2k au lieu des 4,7kp our le pull-up en sortie du transisor. Vous pouvez inverser I1 et I2 dans le montage ce n'est pas grave.
+Si vous ne récoltez que du "None" dans le tampon c'est que l'opto-couplage ne fonctionne pas: vérifiez bien les branchements. Si vous utilisez un autre opto-coupleur que le VIshay K814P il se peut qu'il soit plus ou moins vite saturé, dans ce cas il faut y aller à tâton avec les resistances: essayez par exemple 1.2k au lieu de 1k et 3,3k ou 2,2k au lieu des 4,7k pour le pull-up en sortie du transisor. Vous pouvez inverser I1 et I2 dans le montage ça n'a aucune importance.
 
+## programme pour affichage sur écran OLED
 
-
-
+Pour utiliser le dispositif complet auto-alimenté par la prise TIC, il faut réaliser le montage complet et ne surtout pas oublier les diodes Transil qui vont protéger des surtensions (il y a des pics tueurs  à 20v !). 
