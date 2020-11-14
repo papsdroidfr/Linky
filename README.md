@@ -19,11 +19,20 @@ Plus d'information techniques sur la [prise TIC](https://www.enedis.fr/sites/def
 
 ![compteur linky](_docs/cableTIC.jpg)
 
-Concenrant le câble, soit vous utilisez un câble mono-brun (fils durs) de section 1mm et colorés, comme par exemple des câbles bon marchés téléphoniques ou d'alarme, soit vous utilisez une nappe souple mais il faudra souder les extremitées sur des bouts de câble dur (ce que j'ai fait): j'ai utilisé 5m de napple souple bon marché utilisée pour alimenter des rubans de leds par exemple et ça fonctionne très bien.
+Concenrant le câble, soit vous utilisez un câble mono-brun (fils durs) de section 1mm et colorés, comme par exemple des câbles bon marchés téléphoniques ou d'alarme, soit vous utilisez une nappe souple mais il faudra souder les extremités sur des câbles durs (ce que j'ai fait): j'ai utilisé 5m de nappe souple bon marché utilisée pour alimenter des rubans de leds par exemple et ça fonctionne très bien.
 
+## Circuit électronique
+![schéma](_docs/schemaLinky.png)
 
+L'électronique se compose de 4 blocs principaux.
+* **Opto-couplage du signal I1, I2**: un optocoupleur vishay K814P va permettre de décoder le signal I1, I2 avec un jeux de résistances pour ne pas saturer le transistor. Nous ajoutons des diodes transil bidirectionnelles (16v DO-15) (entre I1,I2 puis entre I1,A afin d'y limiter la tension à 16V. On peut faire sans mais elle sont là pour protéger des surtensions (j'ai déjà cramé une PYBStick à cause des pics de tensions qui grimpaient à 20v parfois sur la TIC de mon compteurlinky). Il vaut mieux les mettre...
+* **PYBStick26**: un modèle Lite est suffisant. On récupère le signal pull-up de l'opto-coupleur sur la PIN S10 qui gère l'entrée Rx UART
+* **Pont-redresseur**: 4 diodes 1N4148 vont redresser le signal entre I1 et A, puis une capactié 100uF va filtrer et lisser le signal. Avec la diode Transil entre I1 et A on obtient un signal propre lissé à 16v max. La PYBStick étant équipée de son propre régulateur de tension, elle accepte en entrée Vin jusqu'à 18v: ce pont redresseur filtré est parfait pour l'alimenter.
+* **Connecteur écran OLED**: un écran OLED I2C 0.96" ou 1.3" avec 4 broches est relié en I2C à la PYBStick: ces écrans consomment très peu de puissance, bien moins qu'un écran LCD: ils sont parfait pour notre utilisation à puissance limitée à 130mw.
 
+Le micro-contrôleur **PYBStick26** est bien adapté pour ce projet. Tout d'abord cocorico je rapelle qu'il s'agit d'un micro-contrôleur **made in France** que l'on peut trouver pour quelques € [ici](https://shop.mchobby.be/fr/micropython/1830-pybstick-lite-26-micropython-et-arduino-3232100018303-garatronic.html). Un modèle Lite est suffisant pour ce projet. Ce micro-controleur programmable en micro-python est équipé de connecteurs UART et I2C qui vont permettre de décoder le signal UART du compteur Linky et de communiquer avec un écran OLED I2C. Il intégre aussi son propre régulateur interne et accepte d'être alimentée aussi bien en 5v qu'en 18v max, donc pas besoin de rajouter un étage de régulation. Enfin cerise sur le gâteau il consomme à peine 20mA sous 5V on reste en dessous des 130mw max.
 
+Petite présentation de la PYBStick26: c'est [par ici](https://www.papsdroid.fr/post/pybstick).
 
 
 
