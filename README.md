@@ -101,6 +101,8 @@ Les deux boutons de la PYBStick26 sont programmés pour
 
 C'est une première version du programme, des améliorations sont en cours de réflexion et vous pouvez l'adapter à vos besoin.
 
+![prototype](_docs/proto01.jpg)
+
 ## Usage ludique et instructif !
 
 L'utlisation est très ludique est instructive. Allumez un lumière et vous verrez l'impact immédiat en W: une led va consommer 10W tandis qu'une ampoule à filament va brûler 50 à 80W!. Allumer votre télé, un ordinateur et plusieurs centaines de W se rajoutent, voire un bon millier s'il y a un qui s'amuse dans sa chambre en full HD 4k en faisant hurler tous les ventilateurs de sa carte graphique. Le four électrique, bouilloire, micro-onde en marche, et le compteur s'affole avec plusieurs milliers de W, et retombe aussitôt les appareils étteints. Je trouve ça super rigolo est instructif,c'est un très bon moyen de mieux consommer si on se rend compte en temps réel de sa consommation.
