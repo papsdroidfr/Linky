@@ -30,7 +30,7 @@ L'électronique se compose de 4 blocs principaux.
 * **Pont-redresseur**: 4 diodes 1N4148 vont redresser le signal entre I1 et A, puis une capactié 100uF va filtrer et lisser le signal. Avec en plus la diode Transil entre I1 et A on obtient ainsi un signal propre lissé à 16v max. La PYBStick étant équipée de son propre régulateur de tension, elle accepte en entrée Vin jusqu'à 18v: ce pont redresseur filtré est parfait pour l'alimenter.
 * **Connecteur écran OLED**: un écran OLED I2C 0.96" ou 1.3" avec 4 broches est relié en I2C à la PYBStick26: ces écrans consomment très peu de puissance, bien moins qu'un écran LCD: ils sont parfait pour notre utilisation à puissance limitée à 130mw.
 
-Le micro-contrôleur **PYBStick26** est bien adapté pour ce projet. Tout d'abord cocorico je rapelle qu'il s'agit d'un micro-contrôleur **made in France** que l'on peut trouver pour quelques € [ici](https://shop.mchobby.be/fr/micropython/1830-pybstick-lite-26-micropython-et-arduino-3232100018303-garatronic.html). Un modèle Lite est suffisant pour ce projet. Ce micro-controleur programmable en micro-python est équipé de connecteurs UART et I2C qui vont permettre de décoder le signal UART du compteur Linky et de communiquer avec un écran OLED I2C. Il intégre aussi son propre régulateur interne et accepte d'être alimentée aussi bien en 5v qu'en 18v max, donc pas besoin de rajouter un étage de régulation. Enfin cerise sur le gâteau il consomme à peine 20mA sous 5V on reste en dessous des 130mw max.
+Le micro-contrôleur **PYBStick26** est bien adapté pour ce projet. Tout d'abord cocorico je rapelle qu'il s'agit d'un micro-contrôleur **made in France** que l'on peut trouver pour quelques € [ici](https://shop.mchobby.be/fr/micropython/1830-pybstick-lite-26-micropython-et-arduino-3232100018303-garatronic.html). Un modèle Lite est suffisant pour ce projet. Ce micro-controleur programmable en micro-python est équipé de connecteurs UART et I2C qui vont permettre de décoder le signal UART du compteur Linky et de communiquer avec un écran OLED I2C. Il intégre aussi son propre régulateur interne et accepte d'être alimentée aussi bien en 5v qu'en 18v max, donc pas besoin de rajouter un étage de régulation. La PYBStick26 est aussi équipée en interne de deux petis bouton poussoirs que l'on peut programmer pour son usage personnel. Enfin cerise sur le gâteau il consomme à peine 20mA sous 5V on reste en dessous des 130mw max.
 
 Petite présentation de la PYBStick26: c'est [par ici](https://www.papsdroid.fr/post/pybstick).
 
@@ -91,7 +91,7 @@ Si vous ne récoltez que du "None" dans le tampon c'est que l'opto-couplage ne f
 
 Pour utiliser le dispositif complet auto-alimenté par la prise TIC, il faut d'abord réaliser le montage électronique complet, et ne surtout pas oublier les diodes transil qui vont protéger des surtensions (il y a des pics tueurs  à 20v !). Bien entendu ne reliez rien d'autre que la prise TIC I1, I2, et A sur votre circuit: **n'allez surtout pas y mettre du 220V** les diodes claqueraient fort mais vous vous métriez surtout en danger mortel d'électrocution!
 
-Pour communiquer avec l'écran OLED il faut installer toutes les dépendances : déposez bien tous les fichiers fournis dans /microPython à la racine de votre PYBStick. 
+Pour communiquer avec l'écran OLED il faut installer toutes les dépendances : déposez bien tous les fichiers fournis dans **/microPython** à la racine de votre PYBStick. 
 
 Le script va lire en boucle la trame TIC stockée dans un tampon. il faut lire la doc de la prise TIC pour comprendre comment décoder cette trame mais ce n'est pas sorcier. Chaque indexe est fourni après un saut de ligne ('\n'), ensuite on a la valeur de l'indexe après un espace, et ainsi de suite. Chaque indexe a une taille qui lui est propre. Il suffit de stocker dans un dictionnaire les idexes que l'on veut rechercehr dans le tampon, avec leur taille on sait où récupérer les valeurs une fois que l'index est repéré dans le tampon, et le tour est joué.
 
@@ -103,4 +103,9 @@ C'est une première version du programme, des améliorations sont en cours de r�
 
 ## Usage ludique et instructif !
 
-L'utlisation est très ludique est instructive. Allumez un lumière et vous verrez l'impact immédiat en W: une led va consommer 10W tandis qu'une ampoule à filament va brûler 50 à 80W!. Allumer votre télé, un ordinateur et plusieurs centaines de W se rajoutent. Le four électrique, bouilloire, micro-onde et le compteur s'affole avec plusieurs milliers de W, et retombe aussitôt les appareils étteints. Je trouve ça super rigolo est instructeur,c'est un très bon moyen de mieux consommer si on se rend compte en temps réel de sa consommation.
+L'utlisation est très ludique est instructive. Allumez un lumière et vous verrez l'impact immédiat en W: une led va consommer 10W tandis qu'une ampoule à filament va brûler 50 à 80W!. Allumer votre télé, un ordinateur et plusieurs centaines de W se rajoutent, voire un bon millier s'il y a un qui s'amuse dans sa chambre en full HD 4k en faisant hurler tous les ventilateurs de sa carte graphique. Le four électrique, bouilloire, micro-onde en marche, et le compteur s'affole avec plusieurs milliers de W, et retombe aussitôt les appareils étteints. Je trouve ça super rigolo est instructif,c'est un très bon moyen de mieux consommer si on se rend compte en temps réel de sa consommation.
+
+# Prochaines étapes - en cours
+
+* création d'un circuit imprimé sur lequel souder tous les composants.
+* création d'un boitier iprimé 3D por loger toute l'electronique.
