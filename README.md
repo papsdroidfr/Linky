@@ -111,6 +111,9 @@ L'utlisation est très ludique est instructive. Allumez un lumière et vous verr
 Les composants peuvent être soudés sur une petite platine d'essai, mais un PCB a été conçu sous KiCad, il est à utiliser avec le boîtier imprimé 3D.
 ![PCB](_docs/linkyRoutage_top.png)
 
+Les fichiers GERBER nécessaires à la fabrication de ce circuit imprimé sont disponibles dans **/GERBER/GERBER_linky.zip** de ce Github.
+
+Il faut d'abord souder les composants du pont redresseur (attention au sens des diodes 1N4148), opto-coupleur (attention au sens), les résistances (valeur sérigraphiées sur le PCB), les 2 diodes transil (peu importe le sens car elles sont bidirectionnelles). Souder ensuite les deux pin header mâle à positionner **dessous** la carte, avant de souder l'écran OLED (sinon vous ne pouvez plus souder les 2 rangées de pin header...). Enfin il faut souder en tout dernier la PYBStick26 sur les pinheader déjà soudés à la carte, et dans le bon sens surtout: les deux boutons poussoirs doivent être orientés vers les deux trous "Off" et "Next".
 
 
 # Boîtier imprimé 3D
@@ -126,4 +129,12 @@ partie basse du boîtier
 boitier dans son intégralité avec la visserie.
 ![boitier3D_full](_docs/boitier3D_full.png)
 
+Si vous avez une imrimante 3D vous pouvez utilser les 3 fichiers STL dans le dossier FreeCad de ce Github:
+* FreeCad/bas.stl: il s'agit de la partie basse du boîtier
+* FreeCad/haut.stl: il s'agit de la partie haute
+* FreeCad/rehausse.stl: ce sont les 2 réhausse de bouton poussoir.
+
+L'assemblage est très simple, pas besoin d'explications ;-)
+
+Quand vous brancher les fils I1, I2 et A de la prise TIC au système: veillez à ne pas vous tromper sinon ça ne fonctionne pas.
 
