@@ -106,7 +106,22 @@ C'est une première version du programme, des améliorations sont en cours de r�
 
 L'utlisation est très ludique est instructive. Allumez un lumière et vous verrez l'impact immédiat en W: une led va consommer 10W tandis qu'une ampoule à filament va brûler 50 à 80W!. Allumer votre télé, un ordinateur et plusieurs centaines de W se rajoutent, voire un bon millier s'il y a un qui s'amuse dans sa chambre en full HD 4k en faisant hurler tous les ventilateurs de sa carte graphique. Le four électrique, bouilloire, micro-onde en marche, et le compteur s'affole avec plusieurs milliers de W, et retombe aussitôt les appareils étteints. Je trouve ça super rigolo est instructif,c'est un très bon moyen de mieux consommer si on se rend compte en temps réel de sa consommation.
 
-# Prochaines étapes - en cours
+# Circuit imprimé (PCB)
 
-* création d'un circuit imprimé sur lequel souder tous les composants.
-* création d'un boitier imprimé 3D pour loger toute l'électronique.
+Les composants peuvent être soudés sur une petite platine d'essai, mais un PCB a été conçu. Ce PCB couçu sous KiCad est à utiliser avec le boîtier imprimé 3D.
+
+
+# Boîtier imprimé 3D
+
+En cours de conception avec FreeCad: le boîtier est composé de deux parteis clipsables hautes et basse sur laquelle viennent se fixer le PCB et les réhausses de bouton poussoir.
+
+modélisation du PCB avec les composants
+![boitier3D_PCB](_docs/boitier3D_PCB.png)
+
+partie basse du boîtier
+![boitier3D_bas](_docs/boitier3D_bas.png)
+
+boitier dans son intégralité avec la visserie.
+![boitier3D_full](_docs/boitier3D_full.png)
+
+
