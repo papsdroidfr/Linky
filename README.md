@@ -108,12 +108,14 @@ L'utlisation est très ludique est instructive. Allumez un lumière et vous verr
 
 # Circuit imprimé (PCB)
 
-Les composants peuvent être soudés sur une petite platine d'essai, mais un PCB a été conçu. Ce PCB couçu sous KiCad est à utiliser avec le boîtier imprimé 3D.
+Les composants peuvent être soudés sur une petite platine d'essai, mais un PCB a été conçu sous KiCad, il est à utiliser avec le boîtier imprimé 3D.
+![PCB](_docs/linkyRoutage_top.png)
+
 
 
 # Boîtier imprimé 3D
 
-En cours de conception avec FreeCad: le boîtier est composé de deux parteis clipsables hautes et basse sur laquelle viennent se fixer le PCB et les réhausses de bouton poussoir.
+Ce boîtier réalisé sur mesure sous FreeCad est composé de deux parties clipsables haute et basse, sur laquelle viennent se fixer le PCB et les réhausses de bouton poussoir.
 
 modélisation du PCB avec les composants
 ![boitier3D_PCB](_docs/boitier3D_PCB.png)
