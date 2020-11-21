@@ -113,7 +113,7 @@ Les composants peuvent être soudés sur une petite platine d'essai, mais un PCB
 
 Les fichiers GERBER nécessaires à la fabrication de ce circuit imprimé sont disponibles dans **/GERBER/GERBER_linky.zip** de ce Github.
 
-Il faut d'abord souder les composants du pont redresseur (attention au sens des diodes 1N4148), opto-coupleur (attention au sens), les résistances (valeur sérigraphiées sur le PCB), les 2 diodes transil (peu importe le sens car elles sont bidirectionnelles). Souder ensuite les deux pin header mâle à positionner **dessous** la carte, avant de souder l'écran OLED (sinon vous ne pouvez plus souder les 2 rangées de pin header...). Enfin il faut souder en tout dernier la PYBStick26 sur les pinheader déjà soudés à la carte, et dans le bon sens surtout: les deux boutons poussoirs doivent être orientés vers les deux trous "Off" et "Next".
+Il faut d'abord souder les composants du pont redresseur (attention au sens des diodes 1N4148), opto-coupleur (attention au sens), les résistances (valeur sérigraphiées sur le PCB), les 2 diodes transil (peu importe le sens car elles sont bidirectionnelles), le connecteur phoenix (dans le bon sens: on doit pouvoir y brancher les fils de la prise TIC depuis l'extérieur de la carte). Souder ensuite les deux pin header mâle à positionner **sous** la carte (soudures au dessus donc), avant de souder l'écran OLED (sinon vous ne pouvez plus souder les 2 rangées de pin header...). Enfin il faut souder en tout dernier la PYBStick26 sur les pinheader déjà soudés à la carte, et dans le bon sens surtout: les deux boutons poussoirs doivent être orientés vers les deux trous "Off" et "Next".
 
 
 # Boîtier imprimé 3D
