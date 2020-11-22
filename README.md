@@ -128,12 +128,12 @@ partie basse du boîtier
 boitier dans son intégralité avec la visserie.
 ![boitier3D_full](_docs/boitier3D_full.png)
 
-Si vous avez une imrimante 3D vous pouvez utiliser les 3 fichiers STL dans le dossier /FreeCad de ce Github:
+Si vous avez une imprimante 3D vous pouvez utiliser les 3 fichiers STL dans le dossier /FreeCad de ce Github:
 * **FreeCad/bas.stl**: il s'agit de la partie basse du boîtier
 * **FreeCad/haut.stl**: il s'agit de la partie haute
 * **FreeCad/rehausse.stl**: ce sont les 2 réhausses de bouton poussoir.
 
-L'assemblage est très simple, pas besoin d'explications ;-)
+L'assemblage est très simple, pas besoin d'explication ;-)
 
 Quand vous branchez les fils I1, I2 et A de la prise TIC au système: **veillez à ne pas vous tromper de sens**, les indications sont sérigraphiées sur le circuit imprimé et apparaissent en relief sur le boîter.
 
