@@ -6,7 +6,7 @@ from pyb import ExtInt
 from time import sleep, sleep_ms
 from fdrawer import FontDrawer
 
-_VERSION = 'v1.32 2020-11-01'
+_VERSION = 'v1.34 2020-11-22'
 
 
 class Application:
@@ -69,6 +69,7 @@ class Afficheur_i2c:
         ''' constructeur'''
         self.oled = ssd1306.SSD1306_I2C(width=128, height=64, i2c=i2c, addr=0x3c, external_vcc=False)
         self.oled.init_display()
+        self.oled.rotate(True)                     # rotation écran 180°
         self.nb_affichages = 2                     # nb d'affichages total
         self.id_affichage = 0                      # id affichage en cours
         self.etat = True                           # True: ecran actif
@@ -135,6 +136,7 @@ class Afficheur_i2c:
         fd.print_str(idx['OPTARIF'][2], 54, 30 )  # option tarrifaire
         fd.print_str(idx['ISOUSC'][2], 54, 46 )   # intensité souscrite
         if self.etat: self.oled.show()
+
 
 #--- script principal
 print('linky start ', _VERSION)

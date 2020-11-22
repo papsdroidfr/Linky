@@ -99,7 +99,15 @@ class SSD1306(framebuf.FrameBuffer):
         self.write_cmd(0)
         self.write_cmd(self.pages - 1)
         self.write_data(self.buffer)
-
+        
+    def rotate(self, flag):
+        ''' rotation 180° '''
+        if flag:
+            self.write_cmd(SET_COM_OUT_DIR)  # mirror vertically
+            self.write_cmd(SET_SEG_REMAP)    # mirror horizontally (64 rows)
+        else:
+            self.write_cmd(SET_COM_OUT_DIR | 0x08)
+            self.write_cmd(SET_SEG_REMAP | 0x01)
 
 class SSD1306_I2C(SSD1306):
     def __init__(self, width, height, i2c, addr=0x3C, external_vcc=False):
