@@ -2,6 +2,8 @@
 
 Affichage déporté et auto-alimenté compteur linky - DIY
 
+![modele3D](_docs/modele3D.png)
+
 Ce projet permet de déporter l'affichage d'un compteur linky sur un petit écran OLED piloté par un mico-controleur PybStick26 lite si peu gourmand en energie qu'il peut être auto-alimenté directement par la prise TIC du compteur Linky sans aucune source 220v. Cela permet de voir en temps réèl la consommation en W, les indexes WH, les informations de contrat etc ... sans avoir à descendre dans son garage ou dans le local dans lequel le compteur est installé.
 
 ## Prise TIC du compteur
@@ -129,9 +131,9 @@ boitier dans son intégralité avec la visserie.
 ![boitier3D_full](_docs/boitier3D_full.png)
 
 Si vous avez une imprimante 3D vous pouvez utiliser les 3 fichiers STL dans le dossier /FreeCad de ce Github:
-* **FreeCad/bas.stl**: il s'agit de la partie basse du boîtier
-* **FreeCad/haut.stl**: il s'agit de la partie haute
-* **FreeCad/rehausse.stl**: ce sont les 2 réhausses de bouton poussoir.
+* **FreeCad/linky_display_coque_basse.stl**: partie basse du boîtier
+* **FreeCad/linky_display_coque_haute.stl**: partie haute
+* **FreeCad/linky_display_rehausse_boutons.stl**: réhausses de bouton poussoir.
 
 L'assemblage est très simple, pas besoin d'explication ;-)
 
