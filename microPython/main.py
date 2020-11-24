@@ -6,7 +6,7 @@ from pyb import ExtInt
 from time import sleep, sleep_ms
 from fdrawer import FontDrawer
 
-_VERSION = 'v1.34 2020-11-22'
+_VERSION = 'v1.35 2020-11-24'
 
 
 class Application:
@@ -41,7 +41,7 @@ class Application:
         ''' boucle principale de l'appli'''
         while True:
             tampon=self.info.read(self.buffer_size)  #tampon est un tableau de bytes
-            print('tampon lu:',tampon) # debug
+            #print('tampon lu:',tampon) # debug
             if tampon != None:         # décodage tampon dans le dictionnaire self.idx
                 for index in self.idx:
                     x=tampon.find(b'\n'+index) #les indexes sont tjrs devant un \n
@@ -49,7 +49,7 @@ class Application:
                     x_end = x_debut + self.idx[index][0]
                     if x>=0 and x_end < len(tampon):
                         self.idx[index][2] = tampon[x_debut : x_end].decode()
-            self.print_idx() #debug
+            #self.print_idx() #debug
 
             if self.afficheur.etat:
                 if self.afficheur.id_affichage == 0:
@@ -72,9 +72,11 @@ class Afficheur_i2c:
         self.oled.rotate(True)                     # rotation écran 180°
         self.nb_affichages = 2                     # nb d'affichages total
         self.id_affichage = 0                      # id affichage en cours
-        self.etat = True                           # True: ecran actif
+        self.contrastes =  [255, 128, 64, 0]       # contraste afficheur 100%, 50%, 25%, O%(Off)
+        self.id_contraste = 0                      # par défaut contraste à 100%
+        self.etat = True                           # True: affiché, False: éteind
         self.buttonOnOff = pyb.Switch()            # bouton user A pybstick: on/off écran OLED
-        self.buttonOnOff.callback(self.switchEtat) # callback appelé avec bouton user A
+        self.buttonOnOff.callback(self.switchContraste) # callback appelé avec bouton user A
         self.buttonAffichage = Pin( 'SW2', Pin.IN) # bouton user B: change l'affichage
         self.extint = ExtInt('SW2', ExtInt.IRQ_FALLING, Pin.PULL_NONE, self.switchAffichage) #callback bouton user B
 
@@ -84,19 +86,24 @@ class Afficheur_i2c:
             self.id_affichage = (self.id_affichage + 1) % self.nb_affichages
             print('affichage num:', self.id_affichage) #debug
 
-    def switchEtat(self):
-        ''' switch etat on/off écran OLED '''
-        self.etat = not(self.etat)
-        if not(self.etat):
-            self.off()
-        else:
-            self.oled.poweron()
+    def switchContraste(self):
+        ''' switch contraste écran OLED '''
+        sleep_ms(50) # stabilisation 50 ms pour éviter faux rebonds
+        if not(self.buttonOnOff.value()): # bouton tjrs enfoncé après stabilisation ?
+            self.id_contraste = (self.id_contraste + 1) % len(self.contrastes)
+            c = self.contrastes[self.id_contraste]
+            print('set contraste:', c)
+            self.oled.contrast(c)
+            if c==0:
+                self.etat = False
+                self.off()      # extinction écran
+            else:
+                self.etat = True
 
     def off(self):
         ''' extinction éran oled'''
         self.oled.fill(0)
         self.oled.show()
-        self.oled.poweroff()
 
     def display_cadres(self):
         ''' affichage des cadres '''
@@ -120,7 +127,7 @@ class Afficheur_i2c:
             fd.print_str(idx['HCHP'][2], 35, 30 )  # valeur HCHP
             fd.print_str(idx['HCHC'][2], 35, 46 )  # valeur HCHC
         else: #tarif base
-            fd.print_str('Wh:', 8, 38 )
+            fd.print_str('KWh', 8, 38 )
             fd.print_str(idx['BASE'][2], 38, 38 )  # valeur index base
         if self.etat: self.oled.show()
 

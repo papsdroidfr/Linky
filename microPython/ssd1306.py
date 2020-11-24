@@ -1,4 +1,5 @@
 # MicroPython SSD1306 OLED driver, I2C and SPI interfaces
+# 2020-11-24  adaptation papsDroid.fr
 
 from micropython import const
 import framebuf
@@ -108,6 +109,7 @@ class SSD1306(framebuf.FrameBuffer):
         else:
             self.write_cmd(SET_COM_OUT_DIR | 0x08)
             self.write_cmd(SET_SEG_REMAP | 0x01)
+
 
 class SSD1306_I2C(SSD1306):
     def __init__(self, width, height, i2c, addr=0x3C, external_vcc=False):
