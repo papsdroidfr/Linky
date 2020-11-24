@@ -128,7 +128,7 @@ class Afficheur_i2c:
             fd.print_str(idx['HCHC'][2], 35, 46 )  # valeur HCHC
         else: #tarif base
             fd.print_str('KWh', 8, 38 )
-            fd.print_str(idx['BASE'][2], 38, 38 )  # valeur index base
+            fd.print_str(idx['BASE'][2], 44, 38 )  # valeur index base
         if self.etat: self.oled.show()
 
     def display_contrat(self, idx):
