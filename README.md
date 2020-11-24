@@ -97,10 +97,9 @@ Pour communiquer avec l'écran OLED il faut installer toutes les dépendances : 
 Le script va lire en boucle la trame TIC stockée dans un tampon. il faut lire la doc de la prise TIC pour comprendre comment décoder cette trame mais ce n'est pas sorcier. Chaque indexe est fourni après un saut de ligne ('\n'), ensuite on a la valeur de l'indexe après un espace, et ainsi de suite. Chaque indexe a une taille qui lui est propre. Il suffit de stocker dans un dictionnaire les idexes que l'on veut rechercher dans le tampon, avec leur taille on sait où récupérer les valeurs lorsque l'index est repéré dans le tampon: le tour est joué.
 
 Les deux boutons de la PYBStick26 sont programmés pour 
-* allumer/etteindre l'écran si vous ne voulez pas qu'il reste allumé 7J/7 24h/24.
+* modifier le contraste (100%, 50%, 25%, Off) si vous ne voulez pas qu'il reste allumé à 100% 7J/7 24h/24.
 * faire défiler deux écrans: l'un qui affiche les données de puissance en temps réel, et un autre qui affiche les données contractuelles.
 
-C'est une première version du programme, des améliorations sont en cours de réflexion et vous pouvez l'adapter à vos besoins.
 
 ![prototype](_docs/proto01.jpg)
 
