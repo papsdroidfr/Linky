@@ -6,6 +6,8 @@ Affichage déporté et auto-alimenté compteur linky - DIY
 
 Ce projet permet de déporter l'affichage d'un compteur linky sur un petit écran OLED piloté par un mico-controleur PybStick26 lite si peu gourmand en energie qu'il peut être auto-alimenté directement par la prise TIC du compteur Linky sans aucune source 220v. Cela permet de voir en temps réèl la consommation en W, les indexes WH, les informations de contrat etc ... sans avoir à descendre dans son garage ou dans le local dans lequel le compteur est installé.
 
+Notice de montage pas à pas sur https://www.papsdroid.fr/post/linky
+
 ## Prise TIC du compteur
 
 Il faut enlever le cadre vert clipsable (vous avez parfaitement le droit): la prise TIC se situe en bas à droite. Il s'agit d'un bornier sans vis composé de 3 sorties: I1, I2 et A. On peut y loger des fils rigides de section 1 à 1,5mm dedans.
@@ -113,6 +115,8 @@ Les composants peuvent être soudés sur une petite platine d'essai, mais un PCB
 ![PCB](_docs/linkyRoutage_top.png)
 
 Les fichiers GERBER nécessaires à la fabrication de ce circuit imprimé sont disponibles dans **/GERBER/GERBER_linky.zip** de ce Github.
+
+Notice de montage pas à pas à consulter sur https://www.papsdroid.fr/post/linky
 
 Il faut d'abord souder les composants du pont redresseur (attention au sens des diodes 1N4148 et de la capactié), l'opto-coupleur (attention au sens), les résistances (valeur sérigraphiées sur le PCB), les 2 diodes transil (peu importe le sens car elles sont bidirectionnelles), le connecteur phoenix (dans le bon sens: on doit pouvoir y brancher les fils de la prise TIC depuis l'extérieur de la carte). Ensuite, attention à veiller à **souder d'abord** les deux pin header mâle à positionner **sous** la carte (soudures au dessus donc), avant de souder l'écran OLED (sinon une fois l'écran soudé vous ne pouvez plus souder les 2 rangées de pin header...). Vous pouvez vous aider d'une breadboard pour les souder bien droits et perpendiculaires à la cate. Enfin, il faut **souder en tout dernier la PYBStick26** sur les pinheader déjà soudés à la carte, et dans le bon sens surtout: les deux boutons poussoirs doivent être orientés vers les deux trous "Off" et "Next".
 
